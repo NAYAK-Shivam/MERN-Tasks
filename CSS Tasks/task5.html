@@ -9,27 +9,27 @@
         background-color: #dbdb1f;
         font-family: Arial, sans-serif;
       }
-      #navbar {
+      #side-menu {
         width: 150px;
         float: left;
         padding: 10px;
       }
-      #navbar ul {
+      #side-menu ul {
         list-style-type: none;
         padding: 0;
       }
-      #navbar li {
+      #side-menu li {
         margin-bottom: 10px;
       }
-      #navbar li a {
+      #side-menu li a {
         color: blue;
         text-decoration: none;
         font-family: serif;
       }
-      li {
+      .menu-item {
         background-color: white;
       }
-      #content {
+      #main-content {
         margin-left: 170px;
         padding: 10px;
         color: rgb(112, 10, 126);
@@ -46,16 +46,16 @@
     </style>
   </head>
   <body>
-    <div id="navbar">
+    <div id="side-menu">
       <ul>
-        <li><a href="#">Home page</a></li>
-        <li><a href="#">Musings</a></li>
-        <li><a href="#">My town</a></li>
-        <li><a href="#">Links</a></li>
+        <li class="menu-item"><a href="#">Home page</a></li>
+        <li class="menu-item"><a href="#">Musings</a></li>
+        <li class="menu-item"><a href="#">My town</a></li>
+        <li class="menu-item"><a href="#">Links</a></li>
       </ul>
     </div>
 
-    <div id="content">
+    <div id="main-content">
       <h1>My first styled page</h1>
 
       <p>Welcome to my styled page!</p>
