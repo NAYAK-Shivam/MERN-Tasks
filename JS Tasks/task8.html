@@ -3,8 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registration Form</title>
-    <style></style>
+    <title>22BPS1084_Task8</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background: linear-gradient(to right, #ffcad4, #fdd5e3, #ffffe0);
+      }
+
+      #registrationForm {
+        width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: blue;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+
+      input[type="radio"],
+      input[type="checkbox"] {
+        margin-right: 5px;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        margin-top: 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      .error {
+        color: red;
+        font-size: 12px;
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <form id="registrationForm">
@@ -97,7 +158,7 @@
       ><br />
 
       <button type="button" onclick="validateForm()">REGISTER</button>
-      <a href="https://www.example.com">Log in to Etikumi website</a>
+      <a href="">Log in to Etikumi website</a>
     </form>
 
     <script>
@@ -115,7 +176,6 @@
       function validateForm() {
         let valid = true;
 
-        // First Name validation
         const firstName = document.getElementById("firstName").value;
         const namePattern = /^[a-zA-Z]+$/;
         if (firstName === "" || !namePattern.test(firstName)) {
@@ -125,7 +185,6 @@
           hideError("firstNameError");
         }
 
-        // Last Name validation
         const lastName = document.getElementById("lastName").value;
         if (lastName === "" || !namePattern.test(lastName)) {
           showError("lastNameError", "POOR");
@@ -134,7 +193,6 @@
           hideError("lastNameError");
         }
 
-        // Email validation
         const email = document.getElementById("email").value;
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email)) {
@@ -144,7 +202,6 @@
           hideError("emailError");
         }
 
-        // Password validation
         const password = document.getElementById("password").value;
         if (password.length < 6) {
           showError("passwordError", "POOR");
@@ -153,7 +210,6 @@
           hideError("passwordError");
         }
 
-        // Confirm Password validation
         const confirmPassword =
           document.getElementById("confirmPassword").value;
         if (confirmPassword !== password) {
@@ -163,7 +219,6 @@
           hideError("confirmPasswordError");
         }
 
-        // Gender validation
         const gender = document.querySelector('input[name="gender"]:checked');
         if (!gender) {
           showError("genderError", "POOR");
@@ -172,7 +227,6 @@
           hideError("genderError");
         }
 
-        // Age validation
         const age = document.getElementById("age").value;
         if (isNaN(age) || age < 1) {
           showError("ageError", "POOR");
@@ -181,7 +235,6 @@
           hideError("ageError");
         }
 
-        // Phone Number validation
         const phoneNumber = document.getElementById("phoneNumber").value;
         const phonePattern = /^\d{10}$/;
         if (!phonePattern.test(phoneNumber)) {
@@ -191,7 +244,6 @@
           hideError("phoneNumberError");
         }
 
-        // Address validation
         const address = document.getElementById("address").value;
         if (address === "") {
           showError("addressError", "POOR");
@@ -200,7 +252,6 @@
           hideError("addressError");
         }
 
-        // State validation
         const state = document.getElementById("state").value;
         if (state === "") {
           showError("stateError", "POOR");
@@ -209,7 +260,6 @@
           hideError("stateError");
         }
 
-        // Country validation
         const country = document.getElementById("country").value;
         if (country === "") {
           showError("countryError", "POOR");
@@ -218,7 +268,6 @@
           hideError("countryError");
         }
 
-        // Language validation
         const languages = document.querySelectorAll(
           'input[name="language"]:checked'
         );
@@ -229,7 +278,6 @@
           hideError("languageError");
         }
 
-        // Declaration validation
         const declaration = document.getElementById("declaration").checked;
         if (!declaration) {
           showError(
