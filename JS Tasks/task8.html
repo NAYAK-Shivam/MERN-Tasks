@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <style></style>
+  </head>
+  <body>
+    <form id="registrationForm">
+      <h2>Registration form</h2>
+
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" name="firstName" /><span
+        class="error"
+        id="firstNameError"
+        >POOR</span
+      ><br />
+
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" /><span
+        class="error"
+        id="lastNameError"
+        >POOR</span
+      ><br />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" /><span
+        class="error"
+        id="emailError"
+        >POOR</span
+      ><br />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" /><span
+        class="error"
+        id="passwordError"
+        >POOR</span
+      ><br />
+
+      <label for="confirmPassword">Re-enter Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" /><span
+        class="error"
+        id="confirmPasswordError"
+        >POOR or MISMATCH</span
+      ><br />
+
+      <label>Gender</label>
+      <input type="radio" id="male" name="gender" value="Male" /> Male
+      <input type="radio" id="female" name="gender" value="Female" />
+      Female<br />
+      <span class="error" id="genderError">POOR</span>
+
+      <label for="age">Age</label>
+      <input type="text" id="age" name="age" /><span class="error" id="ageError"
+        >POOR</span
+      ><br />
+
+      <label for="phoneNumber">Phone Number</label>
+      <input type="text" id="phoneNumber" name="phoneNumber" /><span
+        class="error"
+        id="phoneNumberError"
+        >POOR</span
+      ><br />
+
+      <label for="address">Address</label>
+      <textarea id="address" name="address"></textarea
+      ><span class="error" id="addressError">POOR</span><br />
+
+      <label for="state">State</label>
+      <input type="text" id="state" name="state" /><span
+        class="error"
+        id="stateError"
+        >POOR</span
+      ><br />
+
+      <label for="country">Country</label>
+      <select id="country" name="country">
+        <option value="">Choose your country</option>
+        <option value="India">India</option>
+        <option value="USA">USA</option>
+        <option value="UK">UK</option></select
+      ><span class="error" id="countryError">POOR</span><br />
+
+      <label>Languages known</label>
+      <input type="checkbox" name="language" value="English" /> English
+      <input type="checkbox" name="language" value="Kannada" /> Kannada
+      <input type="checkbox" name="language" value="Hindi" /> Hindi
+      <input type="checkbox" name="language" value="Telugu" /> Telugu<br />
+      <span class="error" id="languageError">POOR</span>
+
+      <input type="checkbox" id="declaration" name="declaration" /> Hereby I
+      declare all the given details are true<span
+        class="error"
+        id="declarationError"
+        >POOR</span
+      ><br />
+
+      <button type="button" onclick="validateForm()">REGISTER</button>
+      <a href="https://www.example.com">Log in to Etikumi website</a>
+    </form>
+
+    <script>
+      function showError(elementId, message) {
+        const errorElement = document.getElementById(elementId);
+        errorElement.innerText = message;
+        errorElement.style.display = "inline";
+      }
+
+      function hideError(elementId) {
+        const errorElement = document.getElementById(elementId);
+        errorElement.style.display = "none";
+      }
+
+      function validateForm() {
+        let valid = true;
+
+        // First Name validation
+        const firstName = document.getElementById("firstName").value;
+        const namePattern = /^[a-zA-Z]+$/;
+        if (firstName === "" || !namePattern.test(firstName)) {
+          showError("firstNameError", "POOR");
+          valid = false;
+        } else {
+          hideError("firstNameError");
+        }
+
+        // Last Name validation
+        const lastName = document.getElementById("lastName").value;
+        if (lastName === "" || !namePattern.test(lastName)) {
+          showError("lastNameError", "POOR");
+          valid = false;
+        } else {
+          hideError("lastNameError");
+        }
+
+        // Email validation
+        const email = document.getElementById("email").value;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          showError("emailError", "POOR");
+          valid = false;
+        } else {
+          hideError("emailError");
+        }
+
+        // Password validation
+        const password = document.getElementById("password").value;
+        if (password.length < 6) {
+          showError("passwordError", "POOR");
+          valid = false;
+        } else {
+          hideError("passwordError");
+        }
+
+        // Confirm Password validation
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+        if (confirmPassword !== password) {
+          showError("confirmPasswordError", "POOR or MISMATCH");
+          valid = false;
+        } else {
+          hideError("confirmPasswordError");
+        }
+
+        // Gender validation
+        const gender = document.querySelector('input[name="gender"]:checked');
+        if (!gender) {
+          showError("genderError", "POOR");
+          valid = false;
+        } else {
+          hideError("genderError");
+        }
+
+        // Age validation
+        const age = document.getElementById("age").value;
+        if (isNaN(age) || age < 1) {
+          showError("ageError", "POOR");
+          valid = false;
+        } else {
+          hideError("ageError");
+        }
+
+        // Phone Number validation
+        const phoneNumber = document.getElementById("phoneNumber").value;
+        const phonePattern = /^\d{10}$/;
+        if (!phonePattern.test(phoneNumber)) {
+          showError("phoneNumberError", "POOR");
+          valid = false;
+        } else {
+          hideError("phoneNumberError");
+        }
+
+        // Address validation
+        const address = document.getElementById("address").value;
+        if (address === "") {
+          showError("addressError", "POOR");
+          valid = false;
+        } else {
+          hideError("addressError");
+        }
+
+        // State validation
+        const state = document.getElementById("state").value;
+        if (state === "") {
+          showError("stateError", "POOR");
+          valid = false;
+        } else {
+          hideError("stateError");
+        }
+
+        // Country validation
+        const country = document.getElementById("country").value;
+        if (country === "") {
+          showError("countryError", "POOR");
+          valid = false;
+        } else {
+          hideError("countryError");
+        }
+
+        // Language validation
+        const languages = document.querySelectorAll(
+          'input[name="language"]:checked'
+        );
+        if (languages.length === 0) {
+          showError("languageError", "POOR");
+          valid = false;
+        } else {
+          hideError("languageError");
+        }
+
+        // Declaration validation
+        const declaration = document.getElementById("declaration").checked;
+        if (!declaration) {
+          showError(
+            "declarationError",
+            "You must declare that the given details are true."
+          );
+          valid = false;
+        } else {
+          hideError("declarationError");
+        }
+
+        if (valid) {
+          const successMessage = document.createElement("span");
+          successMessage.style.color = "green";
+          successMessage.innerText = "Form submitted successfully!";
+          document
+            .getElementById("registrationForm")
+            .appendChild(successMessage);
+        }
+      }
+    </script>
+  </body>
+</html>

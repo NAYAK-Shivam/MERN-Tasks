@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Train Animation</title>
+    <style>
+      #train {
+        position: absolute;
+        left: 0;
+        top: 100px;
+        transition: left 2s linear;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="train" src="./images/train.png" alt="Train Image" width="150" />
+    <div>
+      <button onclick="startAnimation()">Start</button>
+      <button onclick="stopAnimation()">Stop</button>
+    </div>
+
+    <script>
+      let train = document.getElementById("train");
+      let animation;
+
+      function moveRight() {
+        train.style.left = "80%";
+      }
+
+      function resetPosition() {
+        train.style.left = "0";
+      }
+
+      function startAnimation() {
+        resetPosition();
+        setTimeout(() => {
+          moveRight();
+          animation = setInterval(() => {
+            resetPosition();
+            setTimeout(moveRight, 0);
+          }, 2000);
+        }, 0);
+      }
+
+      function stopAnimation() {
+        clearInterval(animation);
+        train.style.left = getComputedStyle(train).left;
+      }
+    </script>
+  </body>
+</html>
